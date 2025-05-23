@@ -1,3 +1,4 @@
+// import "./styles/reset.css";
 import "./App.css";
 import Access from "./components/Access/Access";
 import Belt from "./components/Belt/Belt";
@@ -18,7 +19,7 @@ function App() {
       <Sns />
       <Footer />
     </>
-  )
+  );
 }
 
 export default App;
