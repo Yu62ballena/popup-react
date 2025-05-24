@@ -4,6 +4,7 @@ import "@splidejs/splide/dist/css/splide.min.css";
 
 import { gsap } from "gsap";
 import { SplitText } from "gsap/SplitText";
+import { useScrollTo } from "../../hooks/useScrollTo";
 
 gsap.registerPlugin(SplitText);
 
@@ -83,6 +84,13 @@ function Header() {
     return () => clearTimeout(timer);
   }, []);
 
+  // スクロールナビ
+  const scrollToElement = useScrollTo();
+
+  const handleMenuClick = (targetId: string) => {
+    scrollToElement(targetId);
+  };
+
   return (
     <header className="relative h-screen w-full overflow-hidden">
       {/* splide */}
@@ -147,19 +155,19 @@ function Header() {
           <ul className="flex gap-7 mt-7">
             <li
               className="text-2xl cursor-pointer  hover:text-gray-500"
-              id="messageBtn"
+              onClick={() => handleMenuClick("message")}
             >
               Message
             </li>
             <li
               className="text-2xl cursor-pointer  hover:text-gray-500"
-              id="menuBtn"
+              onClick={() => handleMenuClick("menu")}
             >
               Menu
             </li>
             <li
               className="text-2xl cursor-pointer  hover:text-gray-500"
-              id="accessBtn"
+              onClick={() => handleMenuClick("access")}
             >
               Access
             </li>
@@ -169,7 +177,7 @@ function Header() {
 
       {/* content */}
       <div
-        className="absolute z-40 flex items-center
+        className="absolute z-30 flex items-center
       justify-around flex-col w-full h-11/12 font-first-view"
       >
         <div>
