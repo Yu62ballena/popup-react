@@ -16,46 +16,51 @@ function Access() {
   const storeInfoRef = useRef<HTMLDivElement>(null);
   const isFontReady = useFontReady();
 
-  useGSAP(() => {
-    if (!isFontReady || !storeInfoRef.current) {
-      return;
-    }
-
-    const icons = storeInfoRef.current.querySelectorAll("svg");
-    const headings = new SplitText(
-      storeInfoRef.current.querySelectorAll("h3"),
-      { type: "chars" }
-    );
-    const paragraphs = new SplitText(
-      storeInfoRef.current.querySelectorAll("p"),
-      { type: "chars" }
-    );
-
-    const allElements = [...icons, ...headings.chars, ...paragraphs.chars];
-
-    const timeline = gsap.timeline({
-      scrollTrigger: storeInfoRef.current,
-      start: "top 60%",
-    });
-
-    timeline.fromTo(
-      allElements,
-      {
-        autoAlpha: 0,
-        rotation: -90,
-        transformOrigin: "0% 100%",
-        filter: "blur(5px)",
-      },
-      {
-        autoAlpha: 1,
-        rotation: 0,
-        stagger: 0.02,
-        duration: 0.3,
-        ease: "power2.out",
-        filter: "blur(0px)",
+  useGSAP(
+    () => {
+      if (!isFontReady || !storeInfoRef.current) {
+        return;
       }
-    );
-  }, {dependencies: [isFontReady]});
+
+      const icons = storeInfoRef.current.querySelectorAll("svg");
+      const headings = new SplitText(
+        storeInfoRef.current.querySelectorAll("h3"),
+        { type: "chars" }
+      );
+      const paragraphs = new SplitText(
+        storeInfoRef.current.querySelectorAll("p"),
+        { type: "chars" }
+      );
+
+      const allElements = [...icons, ...headings.chars, ...paragraphs.chars];
+
+      const timeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: storeInfoRef.current,
+          start: "top 60%",
+        },
+      });
+
+      timeline.fromTo(
+        allElements,
+        {
+          autoAlpha: 0,
+          rotation: -90,
+          transformOrigin: "0% 100%",
+          filter: "blur(5px)",
+        },
+        {
+          autoAlpha: 1,
+          rotation: 0,
+          stagger: 0.02,
+          duration: 0.3,
+          ease: "power2.out",
+          filter: "blur(0px)",
+        }
+      );
+    },
+    { dependencies: [isFontReady] }
+  );
 
   return (
     <section
