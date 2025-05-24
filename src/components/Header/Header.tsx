@@ -4,13 +4,13 @@ import "@splidejs/splide/dist/css/splide.min.css";
 
 import { gsap } from "gsap";
 import { SplitText } from "gsap/SplitText";
-import { useScrollTo } from "../../hooks/useScrollTo";
+import LogoNavigation from "./LogoNavigation";
+import Hero from "./Hero";
 
 gsap.registerPlugin(SplitText);
 
 function Header() {
   const splideRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
   const logoRef = useRef<HTMLDivElement>(null);
   const navLinksRef = useRef<HTMLDivElement>(null);
   const dateRef = useRef<HTMLParagraphElement>(null);
@@ -33,26 +33,6 @@ function Header() {
 
       return () => {
         splide.destroy();
-      };
-    }
-  }, []);
-
-  // titleAnimation
-  useEffect(() => {
-    if (titleRef.current) {
-      const titleAnimation = new SplitText(titleRef.current, { type: "chars" });
-      const chars = titleAnimation.chars;
-
-      gsap.from(chars, {
-        autoAlpha: 0,
-        y: 50,
-        stagger: 0.08,
-        ease: "elastic.out(1,0.3)",
-        duration: 1,
-      });
-
-      return () => {
-        titleAnimation.revert();
       };
     }
   }, []);
@@ -83,13 +63,6 @@ function Header() {
 
     return () => clearTimeout(timer);
   }, []);
-
-  // スクロールナビ
-  const scrollToElement = useScrollTo();
-
-  const handleMenuClick = (targetId: string) => {
-    scrollToElement(targetId);
-  };
 
   return (
     <header className="relative h-screen w-full overflow-hidden">
@@ -133,86 +106,15 @@ function Header() {
       </div>
       {/* splide ここまで */}
 
-      {/* グローバルメニュー */}
-      <div className="absolute z-40 w-11/12 h-44 flex justify-between items-start left-[4%] mt-3">
-        {/* ロゴ画像 */}
-        <div
-          ref={logoRef}
-          className="w-24 aspect-[2/3] h-auto -translate-y-2.5"
-        >
-          <img
-            className="w-full h-full object-contain"
-            src="/images/logo.png"
-            alt=""
-          />
-        </div>
-
-        {/* ナビ（リンク） */}
-        <div
-          ref={navLinksRef}
-          className="translate-y-4 z-40"
-        >
-          <ul className="flex gap-7 mt-7">
-            <li
-              className="text-2xl cursor-pointer  hover:text-gray-500"
-              onClick={() => handleMenuClick("message")}
-            >
-              Message
-            </li>
-            <li
-              className="text-2xl cursor-pointer  hover:text-gray-500"
-              onClick={() => handleMenuClick("menu")}
-            >
-              Menu
-            </li>
-            <li
-              className="text-2xl cursor-pointer  hover:text-gray-500"
-              onClick={() => handleMenuClick("access")}
-            >
-              Access
-            </li>
-          </ul>
-        </div>
-      </div>
+      <LogoNavigation
+        logoRef={logoRef}
+        navLinksRef={navLinksRef}
+      />
 
       {/* content */}
-      <div
-        className="absolute z-30 flex items-center
-      justify-around flex-col w-full h-11/12 font-first-view"
-      >
-        <div>
-          <h1
-            ref={titleRef}
-            className="mt-24 text-[8vw] leading-tight font-bold h-fit"
-          >
-            HongKong
-            <br className="sp-br" />
-            <span className="text-stroke">
-              {" "}
-              Swe<span className="animate-e inline-block">e</span>ts
-            </span>
-            <br className="sp-br" />
-            <div className="flex items-baseline">
-              <span>
-                Pop-up <br className="pc-none sp-br" />
-                Store
-              </span>
-              <span className="text-3xl ml-7">
-                produced by He
-                <span className="text-pink inline-block animate-i">i</span>ge
-                <span className="text-pink inline-block animate-i">i</span>
-              </span>
-            </div>
-          </h1>
-        </div>
-        <p className="sp-none"></p>
-        <p
-          ref={dateRef}
-          className="text-5xl font-first-date"
-        >
-          5/20 ~ 5/31
-        </p>
-      </div>
+      <Hero 
+        dateRef={dateRef}
+      />
     </header>
   );
 }
