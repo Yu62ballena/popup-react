@@ -1,13 +1,53 @@
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
+gsap.registerPlugin(ScrollTrigger, SplitText);
+
 import SectionTitle from "../Common/SectionTitle";
 import {
   faCookieBite,
   faCalendarDays,
   faClock,
 } from "@fortawesome/free-solid-svg-icons";
+
 import StoreInfo from "./StoreInfo";
 import GoogleMaps from "./GoogleMaps";
 
 function Access() {
+  const storeInfoRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    if (!storeInfoRef.current) {
+      return;
+    }
+
+    const icons = storeInfoRef.current.querySelectorAll("svg");
+    const headings = new SplitText(storeInfoRef.current.querySelectorAll("h3"), {type: 'chars'});
+    const paragraphs = new SplitText(storeInfoRef.current.querySelectorAll("p"), {type: 'chars'});
+
+    const allElements = [...icons, ...headings.chars, ...paragraphs.chars];
+
+    gsap.fromTo(
+      allElements,
+      {
+        autoAlpha: 0,
+        rotation: -90,
+        transformOrigin: "0% 100%",
+        filter: "blur(5px)",
+      },
+      {
+        autoAlpha: 1,
+        rotation: 0,
+        stagger: 0.02,
+        duration: 0.3,
+        ease: "power2.out",
+        filter: "blur(0px)",
+      }
+    );
+  });
+
   return (
     <section
       className="mb-24 overflow-hidden"
@@ -16,7 +56,10 @@ function Access() {
       <SectionTitle title="access" />
 
       <div className="flex w-4/5 justify-between gap-5 mx-auto">
-        <div className="w-1/3 text-2xl">
+        <div
+          ref={storeInfoRef}
+          className="w-1/3 text-2xl"
+        >
           <StoreInfo
             icon={faCookieBite}
             className="text-amber-700"
@@ -30,12 +73,14 @@ function Access() {
             icon={faCalendarDays}
             className="text-blue-500"
             content="2025年5月21日〜31日"
+            style={{ animationDelay: "0.5s" }}
           />
           <StoreInfo
             icon={faClock}
             className="text-green-500"
             content="11:00〜なくなり次第終了"
             content2="(最終日17:00まで)"
+            style={{ animationDelay: "1s" }}
           />
         </div>
 

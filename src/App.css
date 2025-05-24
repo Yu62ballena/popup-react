@@ -72,6 +72,30 @@
       transform: translateY(0);
     }
   }
+
+  /* ==============================
+	Access Comp
+===============================*/
+  /* アイコンアニメーション */
+  --animate-icon: icon-anim 2s infinite;
+
+  @keyframes icon-anim {
+    0% {
+      transform: none;
+    }
+    6% {
+      transform: translateY(-10px);
+    }
+    12% {
+      transform: none;
+    }
+    18% {
+      transform: translateY(-10px);
+    }
+    24% {
+      transform: none;
+    }
+  }
 }
 
 .pc-none {
@@ -89,7 +113,6 @@
   -webkit-text-stroke-color: black;
 }
 
-
 /* splide関連 */
 .splide {
   position: absolute !important;
@@ -101,9 +124,9 @@
 }
 
 .splide__pagination__page {
-  width: 100%; 
-  height: 100%; 
-  margin: 0 12px 20px; 
-  border-radius: 50%; 
-  transition: all 0.3s ease; 
+  width: 100%;
+  height: 100%;
+  margin: 0 12px 20px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
 }

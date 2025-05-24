@@ -9,6 +9,7 @@ type StoreInfoProps = {
   content: string;
   content2?: string;
   content3?: string;
+  style?: React.CSSProperties;
 };
 
 function StoreInfo({
@@ -19,12 +20,15 @@ function StoreInfo({
   content,
   content2,
   content3,
+  style,
 }: StoreInfoProps) {
+
   return (
     <div className="flex mb-7">
       <FontAwesomeIcon
         icon={icon}
-        className={`mr-2.5 mt-1 ${className}`}
+        style={style}
+        className={`mr-2.5 mt-1 animate-icon ${className}`}
       />
       <div>
         {title && (
