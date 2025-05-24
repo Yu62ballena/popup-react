@@ -5,6 +5,8 @@ import "@splidejs/splide/dist/css/splide.min.css";
 import { gsap } from "gsap";
 import { SplitText } from "gsap/SplitText";
 
+gsap.registerPlugin(SplitText);
+
 function Header() {
   const splideRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -82,7 +84,7 @@ function Header() {
   }, []);
 
   return (
-    <header className="relative h-screen w-full">
+    <header className="relative h-screen w-full overflow-hidden">
       {/* splide */}
       <div
         ref={splideRef}
@@ -124,11 +126,11 @@ function Header() {
       {/* splide ここまで */}
 
       {/* グローバルメニュー */}
-      <div className="absolute z-30 w-11/12 h-44 flex justify-between items-start left-[4%]">
+      <div className="absolute z-40 w-11/12 h-44 flex justify-between items-start left-[4%] mt-3">
         {/* ロゴ画像 */}
         <div
           ref={logoRef}
-          className="w-32 aspect-[2/3] h-auto"
+          className="w-24 aspect-[2/3] h-auto -translate-y-2.5"
         >
           <img
             className="w-full h-full object-contain"
@@ -140,7 +142,7 @@ function Header() {
         {/* ナビ（リンク） */}
         <div
           ref={navLinksRef}
-          className="translate-y-8"
+          className="translate-y-4 z-40"
         >
           <ul className="flex gap-7 mt-7">
             <li
@@ -173,7 +175,7 @@ function Header() {
         <div>
           <h1
             ref={titleRef}
-            className="mt-40 text-[9vw] leading-normal font-bold"
+            className="mt-24 text-[8vw] leading-tight font-bold h-fit"
           >
             HongKong
             <br className="sp-br" />
@@ -193,7 +195,6 @@ function Header() {
                 <span className="text-pink inline-block animate-i">i</span>
               </span>
             </div>
-            <br />
           </h1>
         </div>
         <p className="sp-none"></p>
