@@ -15,26 +15,29 @@ function SectionTitle({ title, className = "" }: SectionTitleProps) {
   const titleRef = useRef(null);
   const isFontReady = useFontReady();
 
-  useGSAP(() => {
-    if (!isFontReady || !titleRef) {
-      return;
-    }
+  useGSAP(
+    () => {
+      if (!isFontReady || !titleRef) {
+        return;
+      }
 
-    const titleAnimation = new SplitText(titleRef.current, { type: "chars" });
-    const titleChars = titleAnimation.chars;
+      const titleAnimation = new SplitText(titleRef.current, { type: "chars" });
+      const titleChars = titleAnimation.chars;
 
-    gsap.from(titleChars, {
-      autoAlpha: 0,
-      y: 50,
-      stagger: 0.1,
-      ease: "back.out",
-      duration: 0.5,
-      scrollTrigger: {
-        trigger: titleRef.current,
-        start: "top 60%",
-      },
-    });
-  }, {dependencies: [isFontReady]});
+      gsap.from(titleChars, {
+        autoAlpha: 0,
+        y: 50,
+        stagger: 0.1,
+        ease: "back.out",
+        duration: 0.5,
+        scrollTrigger: {
+          trigger: titleRef.current,
+          start: "top 60%",
+        },
+      });
+    },
+    { dependencies: [isFontReady] }
+  );
 
   return (
     <h2
