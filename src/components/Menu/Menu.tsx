@@ -16,24 +16,23 @@ function Menu() {
   useGSAP(() => {
     // メニューカードのアニメーション
 
-    if(!cardsRef.current) {
+    if (!cardsRef.current) {
       return;
     }
 
     const menuCards = gsap.utils.toArray(cardsRef.current.children);
 
-    gsap
-      .from(menuCards, {
-        autoAlpha: 0,
-        duration: 0.7,
-        y: 100,
-        sase: "back.out",
-        stagger: 0.3,
-        scrollTrigger: {
-          trigger: cardsRef.current,
-          start: "top 60%",
-        }
-      })
+    gsap.from(menuCards, {
+      autoAlpha: 0,
+      duration: 0.7,
+      y: 100,
+      ease: "back.out",
+      stagger: 0.3,
+      scrollTrigger: {
+        trigger: cardsRef.current,
+        start: "top 60%",
+      },
+    });
   });
 
   return (

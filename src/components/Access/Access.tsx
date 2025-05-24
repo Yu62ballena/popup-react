@@ -10,12 +10,14 @@ import SectionTitle from "../Common/SectionTitle";
 import StoreInfo from "./StoreInfo";
 import GoogleMaps from "./GoogleMaps";
 import { storeInfos } from "../../constants/storeInfos";
+import { useFontReady } from "../../hooks/useFontReady";
 
 function Access() {
   const storeInfoRef = useRef<HTMLDivElement>(null);
+  const isFontReady = useFontReady();
 
   useGSAP(() => {
-    if (!storeInfoRef.current) {
+    if (!isFontReady || !storeInfoRef.current) {
       return;
     }
 
@@ -53,7 +55,7 @@ function Access() {
         filter: "blur(0px)",
       }
     );
-  });
+  }, {dependencies: [isFontReady]});
 
   return (
     <section

@@ -3,6 +3,7 @@ import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
+import { useFontReady } from "../../hooks/useFontReady";
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 type SectionTitleProps = {
@@ -12,9 +13,10 @@ type SectionTitleProps = {
 
 function SectionTitle({ title, className = "" }: SectionTitleProps) {
   const titleRef = useRef(null);
+  const isFontReady = useFontReady();
 
   useGSAP(() => {
-    if (!titleRef) {
+    if (!isFontReady || !titleRef) {
       return;
     }
 
@@ -32,7 +34,7 @@ function SectionTitle({ title, className = "" }: SectionTitleProps) {
         start: "top 60%",
       },
     });
-  });
+  }, {dependencies: [isFontReady]});
 
   return (
     <h2

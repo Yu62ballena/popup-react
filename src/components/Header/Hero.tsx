@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { SplitText } from "gsap/SplitText";
+import { useFontReady } from "../../hooks/useFontReady";
 
 gsap.registerPlugin(SplitText);
 
@@ -10,9 +11,14 @@ type HeroProps = {
 
 function Hero({ dateRef }: HeroProps) {
   const titleRef = useRef<HTMLHeadingElement>(null);
+  const isFontReady = useFontReady();
 
   // titleAnimation
   useEffect(() => {
+    if (!isFontReady || !titleRef.current) {
+      return;
+    }
+
     if (titleRef.current) {
       const titleAnimation = new SplitText(titleRef.current, { type: "chars" });
       const chars = titleAnimation.chars;
@@ -29,7 +35,7 @@ function Hero({ dateRef }: HeroProps) {
         titleAnimation.revert();
       };
     }
-  }, []);
+  }, [isFontReady]);
 
   return (
     <div
