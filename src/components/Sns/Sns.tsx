@@ -20,13 +20,16 @@ function Sns() {
       y: 50,
       scrollTrigger: {
         trigger: snsRef.current,
-        start: "top 100%",
+        start: "top 80%",
       },
     });
   });
 
   return (
-    <section ref={snsRef} className="text-center">
+    <section
+      ref={snsRef}
+      className="text-center"
+    >
       <h3 className="text-2xl mb-7">- Follow Us -</h3>
       <a
         className="mb-12"

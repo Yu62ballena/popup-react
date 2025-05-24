@@ -29,7 +29,12 @@ function Access() {
 
     const allElements = [...icons, ...headings.chars, ...paragraphs.chars];
 
-    gsap.fromTo(
+    const timeline = gsap.timeline({
+      scrollTrigger: storeInfoRef.current,
+      start: "top 60%",
+    })
+
+    timeline.fromTo(
       allElements,
       {
         autoAlpha: 0,

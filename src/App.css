@@ -8,6 +8,9 @@
   /* カラー */
   --color-pink: #ff1493;
 
+  /* ブラー */
+  --blur-smallest : blur(30px);
+
   /* ==============================
 	Header Comp 
   ===============================*/
@@ -111,6 +114,18 @@
       transform: translateY(-10px);
     }
   }
+
+  /* ==============================
+	Footer Comp
+===============================*/
+  /* footer animation */
+  --animate-circle-spin: circle-spin 3s ease-in-out infinite;
+
+  @keyframes circle-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
 }
 
 .pc-none {
@@ -144,4 +159,16 @@
   margin: 0 12px 20px;
   border-radius: 50%;
   transition: all 0.3s ease;
+}
+
+
+/* footerのグラデーションカラー */
+.bg-footer-gradient {
+  background: linear-gradient(
+    135deg,
+    var(--color-footer-gradient-start) 0%,
+    var(--color-footer-gradient-pink-1) 20%,
+    var(--color-footer-gradient-pink-2) 50%,
+    var(--color-footer-gradient-end) 80%
+  );
 }
