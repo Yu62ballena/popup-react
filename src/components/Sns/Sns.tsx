@@ -32,7 +32,7 @@ function Sns() {
     >
       <h3 className="text-2xl mb-7">- Follow Us -</h3>
       <a
-        className="mb-12"
+        className="mb-12 inline-block"
         href="https://www.instagram.com/heigei_ginza/"
       >
         <div className="mx-auto py-1 px-2.5 w-fit flex justify-center items-center text-pink border-4 border-pink mb-20 animate-sns">
