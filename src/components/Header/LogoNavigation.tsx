@@ -18,7 +18,7 @@ const LogoNavigation = ({ logoRef, navLinksRef }: LogoNavigationProps) => {
         <img
           className="w-full h-full object-contain"
           src="/images/logo.png"
-          alt=""
+          alt="ロゴ画像"
         />
       </div>
 

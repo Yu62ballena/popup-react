@@ -13,6 +13,7 @@ function SplideImage({image, alt}: SplideImageProps) {
           className="w-full h-full object-cover"
           src={`/images/${image}`}
           alt={alt}
+          loading="lazy"
         />
       </div>
     </li>

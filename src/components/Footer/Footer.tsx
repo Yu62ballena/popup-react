@@ -66,7 +66,7 @@ function Footer() {
         <img
           className="w-full h-full"
           src="images/heigei-logo.png"
-          alt=""
+          alt="店舗ロゴ"
         />
       </div>
     </footer>

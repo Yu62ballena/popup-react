@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -15,6 +15,7 @@ function GoogleMaps({
   loading = "lazy",
   title = "Google Maps",
 }: GoogleMapsProps) {
+  const [loadError, setLoadError] = useState<boolean>(false);
   const mapRef = useRef<HTMLIFrameElement>(null);
 
   useGSAP(() => {
@@ -32,14 +33,22 @@ function GoogleMaps({
   });
 
   return (
-    <iframe
-      ref={mapRef}
-      className="w-full h-full"
-      src={src}
-      style={{ border: 0 }}
-      loading={loading}
-      title={title}
-    ></iframe>
+    <>
+      {loadError && (
+        <div className="w-full h-full flex items-center justify-center bg-gray-100">
+          <p>地図を読み込むことが出来ませんでした</p>
+        </div>
+      )}
+      <iframe
+        ref={mapRef}
+        className="w-full h-full"
+        src={src}
+        style={{ border: 0 }}
+        loading={loading}
+        title={title}
+        onError={() => setLoadError(true)}
+      ></iframe>
+    </>
   );
 }
 

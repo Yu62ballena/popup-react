@@ -8,9 +8,10 @@ gsap.registerPlugin(ScrollTrigger);
 type ImageProps = {
   image: string;
   animationValue: number;
+  alt: string;
 };
 
-function Image({ image, animationValue }: ImageProps) {
+function Image({ image, animationValue, alt }: ImageProps) {
   const imageRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
@@ -35,7 +36,7 @@ function Image({ image, animationValue }: ImageProps) {
       <img
         className="w-full h-full object-cover"
         src={`/images/${image}`}
-        alt=""
+        alt={alt}
       />
     </div>
   );
