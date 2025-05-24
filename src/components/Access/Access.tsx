@@ -6,14 +6,10 @@ import { SplitText } from "gsap/SplitText";
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 import SectionTitle from "../Common/SectionTitle";
-import {
-  faCookieBite,
-  faCalendarDays,
-  faClock,
-} from "@fortawesome/free-solid-svg-icons";
 
 import StoreInfo from "./StoreInfo";
 import GoogleMaps from "./GoogleMaps";
+import { storeInfos } from "../../constants/storeInfos";
 
 function Access() {
   const storeInfoRef = useRef<HTMLDivElement>(null);
@@ -24,15 +20,21 @@ function Access() {
     }
 
     const icons = storeInfoRef.current.querySelectorAll("svg");
-    const headings = new SplitText(storeInfoRef.current.querySelectorAll("h3"), {type: 'chars'});
-    const paragraphs = new SplitText(storeInfoRef.current.querySelectorAll("p"), {type: 'chars'});
+    const headings = new SplitText(
+      storeInfoRef.current.querySelectorAll("h3"),
+      { type: "chars" }
+    );
+    const paragraphs = new SplitText(
+      storeInfoRef.current.querySelectorAll("p"),
+      { type: "chars" }
+    );
 
     const allElements = [...icons, ...headings.chars, ...paragraphs.chars];
 
     const timeline = gsap.timeline({
       scrollTrigger: storeInfoRef.current,
       start: "top 60%",
-    })
+    });
 
     timeline.fromTo(
       allElements,
@@ -65,28 +67,12 @@ function Access() {
           ref={storeInfoRef}
           className="w-1/3 text-2xl"
         >
-          <StoreInfo
-            icon={faCookieBite}
-            className="text-amber-700"
-            title="香港スイーツ"
-            title2ndLine="PopUp Store"
-            content="〒104-0061"
-            content2="東京都中央区銀座5−7−10"
-            content3="EXITMELSA 1F"
-          />
-          <StoreInfo
-            icon={faCalendarDays}
-            className="text-blue-500"
-            content="2025年5月21日〜31日"
-            style={{ animationDelay: "0.5s" }}
-          />
-          <StoreInfo
-            icon={faClock}
-            className="text-green-500"
-            content="11:00〜なくなり次第終了"
-            content2="(最終日17:00まで)"
-            style={{ animationDelay: "1s" }}
-          />
+          {storeInfos.map((info) => (
+            <StoreInfo
+              key={info.id}
+              {...info}
+            />
+          ))}
         </div>
 
         <div className="w-2/3 h-[500px]">

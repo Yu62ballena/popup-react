@@ -50,10 +50,7 @@ function Menu() {
         {menuItems.map((item) => (
           <MenuCard
             key={item.id}
-            name={item.name}
-            image={item.image}
-            description={item.description}
-            price={item.price}
+            {...item}
           />
         ))}
       </div>
