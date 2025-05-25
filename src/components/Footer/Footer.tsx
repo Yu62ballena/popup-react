@@ -45,7 +45,7 @@ function Footer() {
     >
       <div
         ref={storeNameRef}
-        className="flex items-center mb-5"
+        className="flex items-center mb-10 sm:mb-5 -translate-x-2.5 sm:translate-x-0 "
       >
         <SpinCircle />
         <div className="h-10 mx-5 mb-5">

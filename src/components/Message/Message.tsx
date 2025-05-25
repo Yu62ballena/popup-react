@@ -41,11 +41,11 @@ function Message() {
   return (
     <section
       ref={messageRef}
-      className="text-center mt-24 mb-24 overflow-hidden text-lg leading-normal"
+      className="text-left sm:text-center mt-24 mb-24 overflow-hidden text-lg leading-normal"
       id="message"
     >
-      <div className="w-4/5 mx-auto mb-24">
-        <h2 className="text-2xl font-bold mb-7">
+      <div className="w-11/12 md:w-4/5 mx-auto mb-24">
+        <h2 className="text-xl sm:text-2xl sm:leading-normal font-bold mb-7">
           本場香港の魅力を、もっと身近に感じてほしいから
         </h2>
         <p>
@@ -68,8 +68,8 @@ function Message() {
         </p>
       </div>
 
-      <div className="w-4/5 mx-auto">
-        <h2 className="text-2xl font-bold mb-7">
+      <div className="w-11/12 md:w-4/5 mx-auto">
+        <h2 className="text-xl md:text-2xl leading-9 sm:leading-normal font-bold mb-7">
           香港にはお料理だけでなく魅力的なスイーツがたくさん
         </h2>
         <p>

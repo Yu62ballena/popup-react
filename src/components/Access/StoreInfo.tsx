@@ -24,7 +24,7 @@ function StoreInfo({
 }: StoreInfoProps) {
 
   return (
-    <div className="flex mb-7">
+    <div className="flex mb-7 ml-0 sm:ml-10 md:ml-0">
       <FontAwesomeIcon
         icon={icon}
         style={style}

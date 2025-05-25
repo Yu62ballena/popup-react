@@ -9,7 +9,7 @@
   --color-pink: #ff1493;
 
   /* ブラー */
-  --blur-smallest : blur(30px);
+  --blur-smallest: blur(30px);
 
   /* ==============================
 	Header Comp 
@@ -136,6 +136,32 @@
   display: none;
 }
 
+/* タブレット用 */
+@media screen and (max-width: 768px) {
+  .pc-none {
+    display: block;
+  }
+
+  .tb-none {
+    display: none;
+  }
+}
+
+/* SP用 */
+@media screen and (max-width: 640px) {
+  .sp-br {
+    display: block;
+  }
+
+  .sp-none {
+    display: none;
+  }
+
+  .tb-none {
+    display: block;
+  }
+}
+
 /* テキスト透過・アウトライン付け */
 .text-stroke {
   color: transparent;
@@ -160,7 +186,6 @@
   border-radius: 50%;
   transition: all 0.3s ease;
 }
-
 
 /* footerのグラデーションカラー */
 .bg-footer-gradient {

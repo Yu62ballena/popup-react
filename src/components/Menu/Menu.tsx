@@ -44,7 +44,7 @@ function Menu() {
 
       <div
         ref={cardsRef}
-        className="grid grid-cols-2 gap-16 mx-auto w-4/5"
+        className="grid grid-cols-1 sm:grid-cols-2 gap-16 mx-auto w-11/12 md:w-4/5"
       >
         {menuItems.map((item) => (
           <MenuCard
