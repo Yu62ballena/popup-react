@@ -45,21 +45,21 @@ function Hero({ dateRef }: HeroProps) {
       <div>
         <h1
           ref={titleRef}
-          className="mt-24 text-[8vw] leading-tight font-bold h-fit"
+          className="mt-28 sm:mt-24 text-[20vw] sm:text-[16vw] md:text-[8.5vw] text-center leading-tight font-bold h-fit"
         >
-          HongKong
+          <span className="text-[17vw] sm:text-[16vw] md:text-[8vw]">HongKong</span>
           <br className="sp-br" />
           <span className="text-stroke">
             {" "}
             Swe<span className="animate-e inline-block">e</span>ts
           </span>
           <br className="sp-br" />
-          <div className="flex items-baseline">
+          <div className="flex flex-col md:flex-row items-center md:items-baseline">
             <span>
               Pop-up <br className="pc-none sp-br" />
               Store
             </span>
-            <span className="text-3xl ml-7">
+            <span className="text-3xl md:text-2xl ml-7">
               produced by He
               <span className="text-pink inline-block animate-i">i</span>ge
               <span className="text-pink inline-block animate-i">i</span>
@@ -70,7 +70,7 @@ function Hero({ dateRef }: HeroProps) {
       <p className="sp-none"></p>
       <p
         ref={dateRef}
-        className="text-5xl font-first-date"
+        className="text-3xl sm:text-5xl font-first-date"
       >
         5/20 ~ 5/31
       </p>
