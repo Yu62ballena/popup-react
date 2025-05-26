@@ -9,9 +9,11 @@ type ImageProps = {
   image: string;
   animationValue: number;
   alt: string;
+  width: number;
+  height: number;
 };
 
-function Image({ image, animationValue, alt }: ImageProps) {
+function Image({ image, animationValue, alt, width, height }: ImageProps) {
   const imageRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
@@ -33,11 +35,20 @@ function Image({ image, animationValue, alt }: ImageProps) {
       ref={imageRef}
       className="w-full h-full"
     >
-      <img
-        className="w-full h-full object-cover object-[center_58%]"
-        src={`/images/${image}`}
-        alt={alt}
-      />
+      <picture>
+        <source
+          srcSet={`./images/${image}`}
+          type="image/webp"
+        />
+        <img
+          className="w-full h-full object-cover object-[center_58%]"
+          src={`./images/${image.replace(/\.webp$/i, ".jpg")}`}
+          alt={alt}
+          width={width}
+          height={height}
+          loading="lazy"
+        />
+      </picture>
     </div>
   );
 }

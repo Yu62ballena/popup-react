@@ -63,11 +63,20 @@ function Footer() {
         ref={imageRef}
         className="w-20 h-20"
       >
-        <img
-          className="w-full h-full"
-          src="images/heigei-logo.png"
-          alt="店舗ロゴ"
-        />
+        <picture>
+          <source
+            srcSet="./images/heigei-logo.webp"
+            type="image/webp"
+          />
+          <img
+            className="w-full h-full"
+            src="./images/heigei-logo.png"
+            alt="店舗ロゴ"
+            loading="lazy"
+            width="300"
+            height="300"
+          />
+        </picture>
       </div>
     </footer>
   );
