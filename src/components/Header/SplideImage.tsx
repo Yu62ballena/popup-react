@@ -4,9 +4,10 @@ type SplideImageProps = {
   lazy: boolean;
   width: number;
   height: number;
+  fetchPriority: boolean;
 };
 
-function SplideImage({ image, alt, lazy = false, width, height }: SplideImageProps) {
+function SplideImage({ image, alt, lazy = false, width, height, fetchPriority }: SplideImageProps) {
   return (
     <li className="splide__slide w-full h-full">
       <div className="w-full h-full">
@@ -22,6 +23,7 @@ function SplideImage({ image, alt, lazy = false, width, height }: SplideImagePro
             width={width}
             height={height}
             {...(lazy && { loading: "lazy" })}
+            {...(fetchPriority && { fetchpriority: "high" })}
           />
         </picture>
       </div>

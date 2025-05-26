@@ -27,7 +27,7 @@ function GoogleMaps({
       filter: "blur(30px)",
       scrollTrigger: {
         trigger: mapRef.current,
-        start: "top 60%",
+        start: "top bottom",
       },
     });
   });

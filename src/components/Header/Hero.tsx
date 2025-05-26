@@ -1,4 +1,5 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
+import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { SplitText } from "gsap/SplitText";
 import { useFontReady } from "../../hooks/useFontReady";
@@ -13,29 +14,34 @@ function Hero({ dateRef }: HeroProps) {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const isFontReady = useFontReady();
 
-  // titleAnimation
-  useEffect(() => {
-    if (!isFontReady || !titleRef.current) {
-      return;
-    }
+  useGSAP(
+    () => {
+      if (!isFontReady || !titleRef.current) {
+        return;
+      }
 
-    if (titleRef.current) {
+      // 最初に要素を非表示にする
+      gsap.set(titleRef.current, { autoAlpha: 0 });
+
       const titleAnimation = new SplitText(titleRef.current, { type: "chars" });
       const chars = titleAnimation.chars;
 
-      gsap.from(chars, {
+      // アニメーション開始時に親要素を表示し、文字をアニメーション
+      const tl = gsap.timeline();
+
+      tl.set(titleRef.current, { autoAlpha: 1 }).from(chars, {
         autoAlpha: 0,
         y: 50,
         stagger: 0.08,
         ease: "elastic.out(1,0.3)",
         duration: 1,
       });
-
-      return () => {
-        titleAnimation.revert();
-      };
+    },
+    {
+      dependencies: [isFontReady],
+      scope: titleRef,
     }
-  }, [isFontReady]);
+  );
 
   return (
     <div
@@ -46,8 +52,11 @@ function Hero({ dateRef }: HeroProps) {
         <h1
           ref={titleRef}
           className="mt-28 sm:mt-24 text-[20vw] sm:text-[16vw] md:text-[8.5vw] text-center leading-tight font-bold h-fit"
+          style={{ visibility: "hidden" }}
         >
-          <span className="text-[17vw] sm:text-[16vw] md:text-[8vw]">HongKong</span>
+          <span className="text-[17vw] sm:text-[16vw] md:text-[8vw]">
+            HongKong
+          </span>
           <br className="sp-br" />
           <span className="text-stroke">
             {" "}

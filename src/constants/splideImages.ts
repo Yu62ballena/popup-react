@@ -6,6 +6,7 @@ export const splideImages = [
     lazy: false,
     width: 1500,
     height: 1000,
+    fetchPriority: true,
   },
   {
     id: 2,
@@ -14,6 +15,7 @@ export const splideImages = [
     lazy: true,
     width: 1500,
     height: 1000,
+    fetchPriority: false,
   },
   {
     id: 3,
@@ -22,5 +24,6 @@ export const splideImages = [
     lazy: true,
     width: 1500,
     height: 1000,
+    fetchPriority: false,
   },
 ];
