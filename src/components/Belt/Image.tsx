@@ -34,7 +34,7 @@ function Image({ image, animationValue, alt }: ImageProps) {
       className="w-full h-full"
     >
       <img
-        className="w-full h-full object-cover"
+        className="w-full h-full object-cover object-[center_58%]"
         src={`/images/${image}`}
         alt={alt}
       />
