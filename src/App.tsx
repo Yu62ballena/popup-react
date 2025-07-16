@@ -7,6 +7,7 @@ import Header from "./components/Header/Header";
 import Menu from "./components/Menu/Menu";
 import Message from "./components/Message/Message";
 import Sns from "./components/Sns/Sns";
+import History from "./components/History/History";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Menu />
         <Belt />
         <Access />
+        <History />
         <Sns />
       </main>
       <Footer />

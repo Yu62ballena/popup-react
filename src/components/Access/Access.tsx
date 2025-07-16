@@ -64,7 +64,7 @@ function Access() {
 
   return (
     <section
-      className="mb-24 overflow-hidden"
+      className="mb-48 overflow-hidden"
       id="access"
     >
       <SectionTitle title="access" />
