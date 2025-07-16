@@ -81,7 +81,7 @@ function Hero({ dateRef }: HeroProps) {
         ref={dateRef}
         className="text-3xl sm:text-5xl font-first-date"
       >
-        5/20 ~ 5/31
+        8/20 ~ 8/31
       </p>
     </div>
   );
