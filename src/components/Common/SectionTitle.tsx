@@ -42,7 +42,7 @@ function SectionTitle({ title, className = "" }: SectionTitleProps) {
   return (
     <h2
       ref={titleRef}
-      className={`text-5xl sm:text-6xl mb-20 text-center font-bold ${className}`}
+      className={`text-5xl sm:text-6xl mb-10 sm:mb-20 text-center font-bold ${className}`}
     >
       {title}
     </h2>

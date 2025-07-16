@@ -37,12 +37,12 @@ function History() {
 
   return (
     <section className="mb-32">
-      <SectionTitle title="Event Store History" />
+      <SectionTitle title="Store History" />
 
-      <div className="w-3/6 mx-auto">
+      <div className="w-11/12 md:w-5/6 lg:w-3/6 mx-auto">
         <table
           ref={tableRef}
-          className="text-xl w-full"
+          className="text-lg sm:text-xl w-full"
         >
           <TableList
             date="2025-05-20"
