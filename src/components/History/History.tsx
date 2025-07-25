@@ -48,14 +48,7 @@ function History() {
             date="2025-05-20"
             location="銀座 EXITMELSA 1F"
           />
-          <TableList
-            date="開催日"
-            location="開催場所がここに来る（サンプルデータ）"
-          />
-          <TableList
-            date="開催日"
-            location="開催場所がここに来る（サンプルデータ）"
-          />
+
           {/* また開催したら、ここにTableListを読み込んでいけばOK */}
           {/* イベントの開始日と、開催場所を設定 */}
         </table>

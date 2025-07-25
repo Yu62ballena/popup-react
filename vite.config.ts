@@ -9,10 +9,10 @@ export default defineConfig({
   // base: "/my-creations/popup/react/",
 
   // 会社のエックスサーバーに上げる場合
-  // base: "/sweets/",
+  base: "/sweets/",
 
   // vercelなどにデプロイする場合
-  base: "/",
+  // base: "/",
   build: {
     rollupOptions: {
       output: {

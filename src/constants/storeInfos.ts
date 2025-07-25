@@ -33,7 +33,7 @@ export const storeInfos: StoreInfoData[] = [
     id: 2,
     icon: faCalendarDays,
     className: "text-blue-500",
-    content: "2025年5月21日〜31日",
+    content: "2025年8月20日〜31日",
     style: { animationDelay: "0.5s" },
   },
   {
