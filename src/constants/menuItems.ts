@@ -1,5 +1,15 @@
 export const menuItems = [
   {
+    id: 5,
+    name: "ヨンジーガムロ",
+    image: "mango-drink.webp",
+    description:
+      "一口でくせになる濃厚マンゴ―・ぷにぷにタピオカ・ココナッツミルクがブレンドされたご褒美ドリンク。",
+    price: "864",
+    width: 1000,
+    height: 667,
+  },
+  {
     id: 1,
     name: "バターボーローバン",
     image: "bolobun-butter.webp",
@@ -39,5 +49,4 @@ export const menuItems = [
     width: 980,
     height: 653,
   },
-  
 ];

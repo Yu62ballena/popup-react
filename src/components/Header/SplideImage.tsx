@@ -4,10 +4,11 @@ type SplideImageProps = {
   lazy: boolean;
   width: number;
   height: number;
-  fetchPriority: boolean;
+  contain: boolean;
+  fetchpriority: boolean;
 };
 
-function SplideImage({ image, alt, lazy = false, width, height, fetchPriority }: SplideImageProps) {
+function SplideImage({ image, alt, lazy = false, width, height, contain, fetchpriority }: SplideImageProps) {
   return (
     <li className="splide__slide w-full h-full">
       <div className="w-full h-full">
@@ -17,13 +18,14 @@ function SplideImage({ image, alt, lazy = false, width, height, fetchPriority }:
             type="image/webp"
           />
           <img
-            className="w-full h-full object-cover"
+            // className="w-full h-full object-contain"
+            className={`w-full h-full ${contain ? "object-contain" : "object-cover"}`}
             src={`./images/${image.replace(/\.webp$/i, ".jpg")}`}
             alt={alt}
             width={width}
             height={height}
             {...(lazy && { loading: "lazy" })}
-            {...(fetchPriority && { fetchpriority: "high" })}
+            {...(fetchpriority && { fetchpriority: "high" })}
           />
         </picture>
       </div>

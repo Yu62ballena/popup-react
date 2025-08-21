@@ -9,7 +9,11 @@ export default defineConfig({
   // base: "/my-creations/popup/react/",
 
   // 会社のエックスサーバーに上げる場合
+  // 本番
   base: "/sweets/",
+
+  // 会社のエックスサーバー、一時的なテスト
+  // base: "/sweets-test2/",
 
   // vercelなどにデプロイする場合
   // base: "/",

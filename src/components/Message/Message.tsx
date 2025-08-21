@@ -13,27 +13,27 @@ function Message() {
 
   useGSAP(
     () => {
-        if (!isFontReady || !messageRef.current) {
-          return;
-        }
+      if (!isFontReady || !messageRef.current) {
+        return;
+      }
 
-        const messageAnimation = new SplitText(
-          messageRef.current.querySelectorAll("h2, p"),
-          { type: "lines" }
-        );
+      const messageAnimation = new SplitText(
+        messageRef.current.querySelectorAll("h2, p"),
+        { type: "lines" }
+      );
 
-        const messageLines = messageAnimation.lines;
+      const messageLines = messageAnimation.lines;
 
-        gsap.from(messageLines, {
-          autoAlpha: 0,
-          y: 50,
-          stagger: 0.15,
-          duration: 0.5,
-          scrollTrigger: {
-            trigger: messageRef.current,
-            start: "top 60%",
-          },
-        });
+      gsap.from(messageLines, {
+        autoAlpha: 0,
+        y: 50,
+        stagger: 0.15,
+        duration: 0.5,
+        scrollTrigger: {
+          trigger: messageRef.current,
+          start: "top 60%",
+        },
+      });
     },
     { scope: messageRef, dependencies: [isFontReady] }
   );
@@ -44,6 +44,13 @@ function Message() {
       className="text-left sm:text-center mt-24 mb-24 overflow-hidden text-lg leading-normal"
       id="message"
     >
+      {/* <div className="text-center">
+        <h1 className="font-first-view text-4xl md:text-6xl lg:text-8xl mb-24 leading-snug font-bold">
+          Hong Kong Sweets
+          <br />
+          Pop-up Store
+        </h1>
+      </div> */}
       <div className="w-11/12 md:w-4/5 mx-auto mb-24">
         <h2 className="text-xl sm:text-2xl sm:leading-normal font-bold mb-7">
           本場香港の魅力を、もっと身近に感じてほしいから

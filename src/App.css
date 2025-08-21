@@ -197,3 +197,20 @@
     var(--color-footer-gradient-end) 80%
   );
 }
+
+
+/* Historyのボーダー用CSS */
+/* globals.cssまたは適切なCSSファイルに追加 */
+.table-border {
+  position: relative;
+}
+
+.table-border::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #d1d5db;
+}

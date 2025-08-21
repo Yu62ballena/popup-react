@@ -1,0 +1,7 @@
+[vite.config.ts]
+base: を/sweets/に戻す
+
+
+
+[index.html]
+各URLを最終的なURLに置き換える

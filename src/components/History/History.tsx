@@ -17,15 +17,23 @@ function History() {
       if (!isFontReady || !tableRef.current) {
         return;
       }
+      // const tableRows = tableRef.current.querySelectorAll("tr");
+      // gsap.from(tableRows, {
+      //   autoAlpha: 0,
+      //   // y: 50,
+      //   duration: 0.5,
+      //   filter: "blur(30px)",
+      //   stagger: 0.2,
+      //   scrollTrigger: {
+      //     trigger: tableRef.current,
+      //     start: "top 60%",
+      //   },
+      // });
 
-      const tableRows = tableRef.current.querySelectorAll("tr");
-
-      gsap.from(tableRows, {
+      gsap.from(tableRef.current, {
         autoAlpha: 0,
         y: 50,
         duration: 0.5,
-        filter: "blur(30px)",
-        stagger: 0.2,
         scrollTrigger: {
           trigger: tableRef.current,
           start: "top 60%",
@@ -44,10 +52,12 @@ function History() {
           ref={tableRef}
           className="text-lg sm:text-xl w-full"
         >
-          <TableList
-            date="2025-05-20"
-            location="銀座 EXITMELSA 1F"
-          />
+          <tbody>
+            <TableList
+              date="2025-05-20"
+              location="銀座 EXITMELSA 1F"
+            />
+          </tbody>
 
           {/* また開催したら、ここにTableListを読み込んでいけばOK */}
           {/* イベントの開始日と、開催場所を設定 */}
